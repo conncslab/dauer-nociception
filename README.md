@@ -25,34 +25,3 @@ source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
-
-### Register the environment as a Jupyter kernel (optional)
-
-This lets you select the environment from Jupyter or VS Code:
-
-```bash
-python -m ipykernel install --user --name nociception --display-name "Python (nociception)"
-```
-
-### Verify the installation
-
-```bash
-python -c "import numpy, scipy, pandas, openpyxl, matplotlib, seaborn, sklearn, networkx, tqdm, tifffile, cv2, PIL, mrcfile, nd2, cloudvolume, vtk; print('OK')"
-```
-
-## Running the notebooks
-
-Start Jupyter from the repository root and open a notebook:
-
-```bash
-jupyter lab
-```
-
-Notebooks load data with paths relative to their own folder (e.g. `./data/...`), so run each notebook with its own folder as the working directory. Jupyter Lab and VS Code do this by default.
-
-To run a notebook non-interactively from the command line:
-
-```bash
-cd activity_modeling
-jupyter nbconvert --to notebook --execute --inplace activity_modeling.ipynb
-```
