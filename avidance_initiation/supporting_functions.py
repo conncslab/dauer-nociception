@@ -1,3 +1,9 @@
+# =============================================================================
+# Adopted from Pechuk et al. (2022), "Reprogramming the topology of the
+# nociceptive circuit in C. elegans reshapes sexual behavior." Curr Biol 32(20).
+# https://pubmed.ncbi.nlm.nih.gov/36075218/  (doi:10.1016/j.cub.2022.08.038)
+# =============================================================================
+
 import numpy as np
 import matplotlib.pyplot as plt
 from decimal import Decimal
