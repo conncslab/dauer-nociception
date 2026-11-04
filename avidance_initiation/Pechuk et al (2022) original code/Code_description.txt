@@ -1,0 +1,116 @@
+Code description
+prepare_sets_polarity_sample.py
+•	Build the parameters data frame (all combinations of parameters values – 7^7 = 823,543 rows). Save to csv: "Parameters_combinations_df.csv".  
+•	Consider 4 possibilities of inhibitory connections: ASH - AVB, AVB - AVA, A - B, B - A. find all possible combinations of inhibition and excitation (2^4 = 16). Save to pickle file: "Polarity_combinations_sample.pkl". 
+
+find_parameters_polarity_4_connections.py
+•	Import 3 files:
+	1.	"Parameters_combinations_df.csv" (created in the previous code file). 
+	2.	"Polarity_combinations_sample.pkl" (created in the previous code file).
+	3.	"41586_2019_1352_MOESM9_ESM.xlsx" – connectivity map (Cook et al, 2019). 
+•	Read Cook's connectivity data and narrow for the neurons of interest only. 
+•	Combine all combinations of parameters (823,543) and polarity (16), overall- 13,176,688.
+•	For every row randomly increase\decrease\leave unchanged each synaptic strength value.
+•	Test for each sex two sets of conditions – behavioral and physiological. 
+•	Save the results and the adjustments that were done to the connectivity matrices.  
+•	Use helper functions from: 
+	1.	extract_connectivity_df.py
+	2.	supporting_functions.py
+
+read_parameters_polarity_4_connections.py
+•	Read the outputs of the previous file (find_parameters_polarity_4_connections.py) and save into 2 csv files:
+	1.	"basic_true_par_pol_samp.csv" – rows in which the behavioral conditions are true for the male or the hermaphrodites. 
+	2.	"herm_cell_activity_basic_mutual.csv" – rows in which the behavioral conditions are true for the male and the hermaphrodites, in addition, the physiological conditions are true for the hermaphrodites. 
+•	Import "Polarity_combinations_sample.pkl" and for each polarity test how many sets were valid, based on the two sets of conditions (behavioral and physiological). Save the result to csv: "valid_sets_per_polarity.csv"
+•	Import "Parameters_combinations_df.csv" and simulate a single set for example, from polarity 8 (ASH to AVB is inhibitory and the rest are excitatory). 
+•	Plot bar plot for the distribution of values that appeared in valid sets for each polarity combination.
+•	Use helper functions from supporting_functions.py
+
+find_parameters_polarity_all_single_flips.py
+•	Import 2 files:
+	1.	"Parameters_combinations_df.csv" (created in previous code file). 
+	2.	"41586_2019_1352_MOESM9_ESM.xlsx" – connectivity map (Cook et al, 2019). 
+•	Read Cook's connectivity data and narrow for the neurons of interest only.
+•	Identify all chemical synapses for each sex, and create a united list.
+•	Subtract from the list synapses that were already tested in the code file: find_parameters_polarity_4_connections.py. Each of the remaining synapses (14), one by one, will be simulated as inhibitory.
+•	Combine all combinations of parameters (823,543) and polarity (14), overall- 11,529,602.
+•	For every row randomly increase\decrease\leave unchanged each synaptic strength value.
+•	Test for each sex two sets of conditions – behavioral and physiological. 
+•	Save the results and the adjustments that were done to the connectivity matrices.  
+•	Use helper functions from: 
+	1.	extract_connectivity_df.py
+	2.	supporting_functions.py 
+
+read_parameters_polarity_all_single_flips.py
+•	Read the outputs of the previous file (find_parameters_polarity_all_single_flips.py) and save into 2 csv files:
+	1.	"basic_true_single_pol_flips.csv" – rows in which the behavioral conditions are true for the male or the hermaphrodites. 
+	2.	"herm_physiological_basic_behavioral_single_flips.csv" – rows in which the behavioral conditions are true for the male and the hermaphrodites, in addition, the physiological conditions are true for the hermaphrodites (turned out to be an empty table). 
+•	for each polarity (different inhibitory synapses) test how many sets were valid, based on the two sets of conditions (behavioral and physiological). Save the result to csv: "valid_sets_per_single_flip.csv"
+
+find_different_sensory_stimuli_4_connections.py
+•	Import 2 files:
+	1.	"Parameters_combinations_df.csv" (created in a previous code file).
+	2.	"herm_cell_activity_basic_mutual.csv " (created in a previous code file).
+•	For all sets that met all behavioral conditions for both sexes and the physiological conditions for the hermaphrodites, test the response for different stimulus strength. For each set (including different parameters and polarity), save the difference in membrane potential between the average activity of A in the last second of the stimulus, to the average activity of B (in the same time points). From the difference infer the direction of the movement for each stimulus.   
+•	Use helper functions from supporting_functions.py
+
+read_different_sensory_stimuli_4_connections.py
+•	Read the outputs of the previous file (find_different_sensory_stimuli_4_connections.py) and save into a csv file: "different_stimuli_samp_pol.csv".
+•	Plot for each polarity combination that contains valid sets the predicted avoidance for each sensory stimulus. 
+•	Use helper functions from supporting_functions.py
+
+interneurons_activations_polarity_8.py
+•	Import 2 files:
+	1.	"Parameters_combinations_df.csv" (created in a previous code file).
+	2.	"herm_cell_activity_basic_mutual.csv " (created in a previous code file). From this file, choose only sets with polarity 8 (all excitatory except ASH-AVB). 
+•	For each set test the response of the interneurons to different sensory stimuli. For each interneuron save the difference between the average of the second prior to the stimulus, and the average of the last second in which the stimulus is given.  
+•	Use helper functions from supporting_functions.py
+
+read_interneurons_activations_polarity_8.py
+•	Read the outputs of the previous file (interneurons_activations_polarity_8.py) and save into a csv file: "Interneurons_activations_polarity_8.csv".
+•	For each interneuron and for each parameter set plot the response for the different sensory stimuli.   
+
+sex_reversal_single_con_4_connections.py
+•	Import 2 files:
+	1.	"Parameters_combinations_df.csv" (created in a previous code file).
+	2.	"different_stimuli_samp_pol.csv " (created in a previous code file). 
+•	Identify sex-specific connections.
+•	For each dimorphic connection and for each polarity configuration, copy the dimorphic connection to the opposite sex and check the response (difference in average membrane potential between A and B at the last second of the stimulus).
+•	Repeat the previous step, but this time remove the dimorphic connection from the original sex.  
+•	Use helper functions from supporting_functions.py
+
+sex_reversal_double_con_4_connections.py
+•	Import 2 files:
+	1.	"Parameters_combinations_df.csv" (created in a previous code file).
+	2.	"different_stimuli_samp_pol.csv " (created in a previous code file). 
+•	Identify sex-specific connections.
+•	Find all combinations of couples of dimorphic connections (separately for each sex).
+•	For each couple of dimorphic connections and for each polarity configuration, copy the dimorphic connections to the opposite sex and check the response (difference in average membrane potential between A and B at the last second of the stimulus).
+•	Repeat the previous step, but this time remove the couple of connections from the original sex.   
+•	Use helper functions from supporting_functions.py
+
+sex_reversal_whole_cell_4_connections.py
+•	Import 2 files:
+	1.	"Parameters_combinations_df.csv" (created in a previous code file).
+	2.	"different_stimuli_samp_pol.csv " (created in a previous code file). 
+•	For each cell in the circuit and for each polarity configuration, copy all connections to the opposite sex (instead of original connections), then check the response (difference in average membrane potential between A and B at the last second of the stimulus).
+•	Use helper functions from supporting_functions.py
+
+read_dimorphic_samp_pol.py
+•	For each polarity configuration plot all results from files:
+	1.	sex_reversal_single_con_4_connections.py
+	2.	sex_reversal_double_con_4_connections.py
+	3.	sex_reversal_whole_cell_4_connections.py
+•	Use helper functions from supporting_functions.py
+•	(Single and double connections from ASH to AVA are plotted separately from the rest since they appear in a main figure).
+
+supporting_functions.py
+This file contains helper functions used in many other files as specified above. 
+
+extract_connectivity_df.py 
+This file contains functions for extracting the connectivity data from Cook et al (2019), and organizing it. Few changes are being made to Cook's data:
+	1.	We take only neurons of interest. 
+	2.	We apply a threshold for strength of chemical synapses.
+	3.	We average over neural groups. 
+	4.	We ignore connections within a neural group. 
+	5.	We transpose Cook's data (for calculation purposes). 
