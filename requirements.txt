@@ -1,0 +1,27 @@
+# Python >= 3.9
+
+# Core scientific stack
+numpy
+scipy
+pandas
+openpyxl          # pandas.read_excel for .xlsx inputs
+matplotlib
+seaborn
+scikit-learn
+networkx
+tqdm
+
+# Image / microscopy I/O
+tifffile
+opencv-python     # cv2
+Pillow            # PIL
+mrcfile
+nd2
+
+# Connectomics / 3D meshes (basic_analysis/nociception_code_mesh_skeleton.ipynb)
+cloud-volume      # cloudvolume
+vtk
+
+# Notebooks
+jupyterlab
+ipykernel
