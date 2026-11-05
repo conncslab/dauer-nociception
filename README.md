@@ -8,7 +8,7 @@ Dauer nociception circuit analysis code for Choe et al.
 | `basic_analysis/` | Behavior analysis and EM mesh/skeleton analysis |
 | `calcium_imaging/` | Calcium imaging analysis |
 | `avidance_initiation/` | Avoidance initiation circuit simulations in Fig. 6 |
-| `activity_modeling/` | AVB activity modeling in Fig. 3 ([AVB_activity_modeling.ipynb](activity_modeling/AVB_activity_modeling.ipynb)) |
+| `activity_modeling/` | AVB activity modeling in Fig. 3 |
 
 All analyses are Jupyter notebooks.
 
